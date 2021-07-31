@@ -4,15 +4,15 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 NAME = "glasgow-live"
-DESCRIPTION = "RSS feeds from https://www.glasgowlive.co.uk/"
+DESCRIPTION = "News feeds from https://www.glasgowlive.co.uk/"
 VERSION = "0.0.1"
 AUTHOR = "Adam Riaz"
 AUTHOR_EMAIL = "riaz_adam@hotmail.com"
 LONG_DESCRIPTION = long_description
-URL = ""
+URL = "https://github.com/adamriaz/glasgow-live"
 
 # Required packages
-REQUIRED = []
+REQUIRED = ["feedparser"]
 
 setup(
     name=NAME,
