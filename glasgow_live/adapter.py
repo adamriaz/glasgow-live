@@ -1,6 +1,6 @@
 import feedparser
 
-from entry_data import Entry
+from models import Entry
 
 
 class FeedAdapter:
@@ -10,6 +10,10 @@ class FeedAdapter:
 
     def __get_entries(self, url: str):
         return self.__feedparser.parse(url)["entries"]
+
+    # TODO GET CHANNEL INFO
+    def __get_channel_info(self):
+        pass
 
     def get_data(self, url: str) -> list[Entry]:
         entries = self.__get_entries(url=url)

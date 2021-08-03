@@ -3,8 +3,8 @@ import json
 
 class Entry(object):
 
-    def __init__(self, title: str, link: str, id: str, summary: str, published: str, author: str, media_keywords: str,
-                 media_image: str):
+    def __init__(self, title: str = None, link: str = None, id: str = None, summary: str = None, published: str = None,
+                 author: str = None, media_keywords: str = None, media_image: str = None):
         self.title = title
         self.link = link
         self.id = id

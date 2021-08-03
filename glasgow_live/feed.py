@@ -1,9 +1,10 @@
 from adapter import FeedAdapter
-from entry_data import Entry
+from links import NEWS
+from models import Entry
 
 
 def get_feed():
-    return FeedAdapter().get_data("https://www.glasgowlive.co.uk/news/?service=rss")
+    return FeedAdapter().get_data(NEWS)
 
 
 if __name__ == "__main__":
