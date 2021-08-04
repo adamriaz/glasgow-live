@@ -12,7 +12,7 @@ LONG_DESCRIPTION = long_description
 URL = "https://github.com/adamriaz/glasgow-live"
 
 # Required packages
-REQUIRED = ["feedparser"]
+REQUIRED = ["feedparser", "facebook-scraper", "twitter-scraper"]
 
 setup(
     name=NAME,

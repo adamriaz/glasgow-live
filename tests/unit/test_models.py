@@ -1,11 +1,11 @@
 import unittest
-from glasgow_live.models import Entry
+from glasgow_live.models import RSSEntry
 
 
 class TestModels(unittest.TestCase):
 
     def setUp(self):
-        self.entry = Entry(
+        self.entry = RSSEntry(
             title="test",
             link="test",
             id="test",

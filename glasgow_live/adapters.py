@@ -1,25 +1,42 @@
 import feedparser
 
-from models import Entry
+from social_medias import FACEBOOK_PAGE
+from models import RSSEntry
+from facebook_scraper import get_posts
 
 
-class FeedAdapter:
+class FacebookFeedAdapter:
+
+    def get_data(self, pages: int = 3):
+        posts = []
+        for post in get_posts(account=FACEBOOK_PAGE, pages=pages):
+            posts.append(post)
+        return posts
+
+
+class RSSFeedAdapter:
 
     def __init__(self):
         self.__feedparser = feedparser
 
-    def __get_entries(self, url: str):
+    def __get_entries(self, url: str) -> any:
         return self.__feedparser.parse(url)["entries"]
 
     # TODO GET CHANNEL INFO
     def __get_channel_info(self):
         pass
 
-    def get_data(self, url: str) -> list[Entry]:
+    def get_RSS_data(self, url: str) -> list[RSSEntry]:
+        """
+        Iterates through the results to fields that are expected.
+
+        :param url: RSS url string
+        :return: Entry list results
+        """
         entries = self.__get_entries(url=url)
-        entries_data: list[Entry] = []
+        entries_data: list[RSSEntry] = []
         for item in entries:
-            entry = Entry(
+            entry = RSSEntry(
                 title=item["title"],
                 link=item["link"],
                 id=item["id"],
@@ -32,4 +49,3 @@ class FeedAdapter:
             entries_data.append(entry)
 
         return entries_data
-
