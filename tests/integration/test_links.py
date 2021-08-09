@@ -13,7 +13,7 @@ class TestLinks(unittest.TestCase):
             rss_links.POLITICS, rss_links.TRAVEL, rss_links.BUSINESS, rss_links.HISTORY, rss_links.WORLD_NEWS,
             rss_links.NEWS_OPINION, rss_links.SPORT_NEWS, rss_links.CELTIC_FC, rss_links.RANGERS_FC,
             rss_links.OTHER_SPORT, rss_links.SPECIAL_FEATURES, rss_links.PROPERTY, rss_links.LIFE_STYLE,
-            rss_links.GLASGOW_LIVES]
+            rss_links.GLASGOW_LIVES, rss_links.WEATHER]
         return links
 
     def test_all_links(self):

@@ -4,12 +4,13 @@ from glasgow_live.adapters import TwitterFeedAdapter, FacebookFeedAdapter, RSSFe
 import unittest
 
 from glasgow_live.rss_links import GLASGOW_NEWS
+from glasgow_live.social_medias import TWITTER_PAGE, FACEBOOK_PAGE
 
 
 class TestTwitterFeedAdapter(unittest.TestCase):
 
     def setUp(self):
-        self.twitter_adapter = TwitterFeedAdapter()
+        self.twitter_adapter = TwitterFeedAdapter(TWITTER_PAGE)
 
     def test__get_data(self):
         test = self.twitter_adapter._get_tweets()
@@ -23,7 +24,7 @@ class TestTwitterFeedAdapter(unittest.TestCase):
 class TestFacebookFeedAdapter(unittest.TestCase):
 
     def setUp(self):
-        self.facebook_adapter = FacebookFeedAdapter()
+        self.facebook_adapter = FacebookFeedAdapter(FACEBOOK_PAGE)
 
     def test__get_posts(self):
         test = self.facebook_adapter._get_posts(1)
@@ -37,13 +38,13 @@ class TestFacebookFeedAdapter(unittest.TestCase):
 class TestRSSFeedAdapter(unittest.TestCase):
 
     def setUp(self):
-        self.rss_adapter = RSSFeedAdapter()
+        self.rss_adapter = RSSFeedAdapter(GLASGOW_NEWS)
 
     def test__get_entries(self):
-        test = self.rss_adapter._get_entries(GLASGOW_NEWS)
+        test = self.rss_adapter._get_entries()
         self.assertGreater(len(test), 0, msg="Expects list to be greater than 0")
 
     def test_get_rss_data(self):
-        test = self.rss_adapter.get_rss_data(GLASGOW_NEWS)
+        test = self.rss_adapter.get_rss_data()
         self.assertGreater(len(test), 0, msg="Expects list to be greater than 0")
 

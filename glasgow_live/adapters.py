@@ -2,21 +2,20 @@ import feedparser
 import facebook_scraper
 import twint
 from typing import Any, Iterator
-from social_medias import FACEBOOK_PAGE, TWITTER_PAGE
 from models import RSSEntry, FacebookPost, TwitterTweet
 
 
 class TwitterFeedAdapter:
 
-    def __init__(self):
+    def __init__(self, page_name: str):
         self._twint = twint
         self._twitter = self._twint.Config()
         self._twitter.Hide_output = True
+        self._twitter.Username = page_name
 
     def _get_tweets(self, pages: int = 1) -> list:
         try:
             posts = []
-            self._twitter.Username = TWITTER_PAGE
             self._twitter.Limit = pages
             self._twitter.Store_json = True
             self._twitter.Store_object = True
@@ -82,12 +81,13 @@ class TwitterFeedAdapter:
 
 class FacebookFeedAdapter:
 
-    def __init__(self):
+    def __init__(self, page_name: str):
         self._facebook_scraper = facebook_scraper
+        self._page_name = page_name
 
     def _get_posts(self, pages: int = 3) -> Iterator[dict[str, Any]]:
         try:
-            return self._facebook_scraper.get_posts(account=FACEBOOK_PAGE, pages=pages)
+            return self._facebook_scraper.get_posts(account=self._page_name, pages=pages)
         except Exception as e:
             raise ValueError(f"Error occurred on Facebook Feed. {e}")
 
@@ -137,23 +137,24 @@ class FacebookFeedAdapter:
 
 class RSSFeedAdapter:
 
-    def __init__(self):
+    def __init__(self, url: str):
         self._feedparser = feedparser
+        self._url = url
 
-    def _get_entries(self, url: str) -> any:
+    def _get_entries(self) -> any:
         try:
-            return self._feedparser.parse(url)["entries"]
+            return self._feedparser.parse(self._url)["entries"]
         except Exception as e:
             raise ValueError(f"Error occurred on RSS Feed. {e}")
 
-    def get_rss_data(self, url: str) -> list[dict[str, Any]]:
+    def get_rss_data(self) -> list[dict[str, Any]]:
         """
         Returns the results from RSS url.
 
         :param url: RSS url
         :return: RSSEntry results
         """
-        entries = self._get_entries(url=url)
+        entries = self._get_entries()
         entries_data = []
         for item in entries:
             entry = RSSEntry(

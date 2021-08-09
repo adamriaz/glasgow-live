@@ -1,7 +1,8 @@
 from typing import Any
 
 from adapters import RSSFeedAdapter, FacebookFeedAdapter, TwitterFeedAdapter
-import glasgow_live.rss_links as rss_links
+from glasgow_live.social_medias import TWITTER_PAGE, FACEBOOK_PAGE
+
 
 def rss_feed(url: str) -> list[dict[str, Any]]:
     """
@@ -10,7 +11,7 @@ def rss_feed(url: str) -> list[dict[str, Any]]:
     :param url: RSS url
     :return: RSS list
     """
-    return RSSFeedAdapter().get_rss_data(url)
+    return RSSFeedAdapter(url).get_rss_data()
 
 
 def facebook_feed(pages: int = 3) -> list[dict[str, Any]]:
@@ -20,7 +21,7 @@ def facebook_feed(pages: int = 3) -> list[dict[str, Any]]:
     :param pages: Number of pages
     :return: Facebook posts
     """
-    return FacebookFeedAdapter().get_data(pages=pages)
+    return FacebookFeedAdapter(FACEBOOK_PAGE).get_data(pages=pages)
 
 
 def twitter_feed(pages: int = 1) -> list[dict[str, Any]]:
@@ -30,7 +31,4 @@ def twitter_feed(pages: int = 1) -> list[dict[str, Any]]:
     :param pages: Number of pages
     :return: Twitter tweets
     """
-    return TwitterFeedAdapter().get_data(pages=pages)
-
-
-
+    return TwitterFeedAdapter(TWITTER_PAGE).get_data(pages=pages)
