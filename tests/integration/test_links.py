@@ -2,15 +2,17 @@ import unittest
 
 import requests
 
-from glasgow_live.rss_links import LATEST_NEWS, GLASGOW_NEWS, CRIME, HEALTH, EDUCATION, POLITICS, TRAVEL, \
-    BUSINESS, HISTORY, WORLD_NEWS, NEWS_OPINION, SPORT_NEWS, CELTIC_FC, RANGERS_FC, OTHER_SPORT
+import glasgow_live.rss_links as rss_links
 
 
 class TestLinks(unittest.TestCase):
 
     def get_all_links(self):
-        links = [LATEST_NEWS, GLASGOW_NEWS, CRIME, HEALTH, EDUCATION, POLITICS, TRAVEL,
-                 BUSINESS, HISTORY, WORLD_NEWS, NEWS_OPINION, SPORT_NEWS, CELTIC_FC, RANGERS_FC, OTHER_SPORT]
+        links = [
+            rss_links.LATEST_NEWS, rss_links.GLASGOW_NEWS, rss_links.CRIME, rss_links.HEALTH, rss_links.EDUCATION,
+            rss_links.POLITICS, rss_links.TRAVEL, rss_links.BUSINESS, rss_links.HISTORY, rss_links.WORLD_NEWS,
+            rss_links.NEWS_OPINION, rss_links.SPORT_NEWS, rss_links.CELTIC_FC, rss_links.RANGERS_FC,
+            rss_links.OTHER_SPORT]
         return links
 
     def test_all_links(self):

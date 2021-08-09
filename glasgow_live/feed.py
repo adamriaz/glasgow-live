@@ -1,23 +1,22 @@
 from typing import Any
 
 from adapters import RSSFeedAdapter, FacebookFeedAdapter, TwitterFeedAdapter
-from rss_links import LATEST_NEWS, SPORT_NEWS
-from models import RSSEntry
+import rss_links
 
 
-def get_news() -> list[dict[str, Any]]:
-    return RSSFeedAdapter().get_rss_data(SPORT_NEWS)
+def rss_feed(url: str) -> list[dict[str, Any]]:
+    return RSSFeedAdapter().get_rss_data(url)
 
 
-def get_facebook_feed():
-    return FacebookFeedAdapter().get_data(pages=1)
+def facebook_feed(pages: int = 3) -> list[dict[str, Any]]:
+    return FacebookFeedAdapter().get_data(pages=pages)
 
 
-def get_twitter_feed():
-    return TwitterFeedAdapter().get_data(pages=3)
+def twitter_feed(pages: int = 1) -> list[dict[str, Any]]:
+    return TwitterFeedAdapter().get_data(pages=pages)
 
 
 if __name__ == "__main__":
-    data = get_twitter_feed()
+    data = twitter_feed()
 
     print(data)

@@ -17,6 +17,16 @@ HISTORY = f"{_BASE_URL}/{_NEWS}/history/{_RSS_SERVICE}"
 WORLD_NEWS = f"{_BASE_URL}/{_NEWS}/world-news/{_RSS_SERVICE}"
 NEWS_OPINION = f"{_BASE_URL}/{_NEWS}/news-opinion/{_RSS_SERVICE}"
 
+# WHAT'S ON MENU
+_WHATS_ON = "whats-on"
+WHATS_ON_NEWS = f"{_BASE_URL}/{_WHATS_ON}/{_RSS_SERVICE}"
+FAMILY_KIDS_NEWS = f"{_BASE_URL}/{_WHATS_ON}/family-kids-news/{_RSS_SERVICE}"
+COMEDY_NEWS = f"{_BASE_URL}/{_WHATS_ON}/comedy-news/{_RSS_SERVICE}"
+MUSIC_LIFE_NEWS = f"{_BASE_URL}/{_WHATS_ON}/music-nightlife-news/{_RSS_SERVICE}"
+THEATRE_NEWS = f"{_BASE_URL}/{_WHATS_ON}/theatre-news/{_RSS_SERVICE}"
+FILM_NEWS = f"{_BASE_URL}/{_WHATS_ON}/film-news/{_RSS_SERVICE}"
+
+
 # SPORT MENU
 _SPORT = "sport"
 SPORT_NEWS = f"{_BASE_URL}/{_SPORT}/{_RSS_SERVICE}"

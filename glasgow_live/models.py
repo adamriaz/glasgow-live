@@ -1,4 +1,3 @@
-import json
 from datetime import datetime
 
 
@@ -23,15 +22,12 @@ class RSSEntry:
         self.media_keywords = media_keywords
         self.media_image = media_image
 
-    def to_json(self):
-        return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True)
-
 
 class FacebookPost:
 
     def __init__(
             self,
-            post_id: str,
+            post_id: str = None,
             text: str = None,
             post_text: str = None,
             shared_text: str = None,
@@ -47,7 +43,7 @@ class FacebookPost:
             video_height: int = None,
             video_id: str = None,
             video_quality: str = None,
-            video_size_mb: float = None,
+            video_size_MB: float = None,
             video_thumbnail: str = None,
             video_watches: int = None,
             video_width: int = None,
@@ -77,7 +73,7 @@ class FacebookPost:
         self.video_height = video_height
         self.video_id = video_id
         self.video_quality = video_quality
-        self.video_size_mb = video_size_mb
+        self.video_size_MB = video_size_MB
         self.video_thumbnail = video_thumbnail
         self.video_watches = video_watches
         self.video_width = video_width
@@ -91,5 +87,83 @@ class FacebookPost:
         self.user_url = user_url
         self.is_live = is_live
 
-    def to_json(self):
-        return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True)
+
+class TwitterTweet:
+
+    def __init__(
+            self,
+            id: int = None,
+            id_str: str = None,
+            conversation_id: str = None,
+            datetime: str = None,
+            datestamp: str = None,
+            timestamp: str = None,
+            user_id: int = None,
+            user_id_str: str = None,
+            username: str = None,
+            name: str = None,
+            place: str = None,
+            timezone: str = None,
+            mentions: list[str] = None,
+            reply_to: list[str] = None,
+            urls: list[str] = None,
+            video: int = None,
+            thumbnail: str = None,
+            tweet: str = None,
+            lang: str = None,
+            hashtags: list[str] = None,
+            cashtags: list[str] = None,
+            replies_count: int = None,
+            retweets_count: int = None,
+            likes_count: int = None,
+            link: str = None,
+            retweet: bool = False,
+            retweet_id: str = None,
+            retweet_date: str = None,
+            user_rt: str = None,
+            user_rt_id: str = None,
+            quote_url: str = None,
+            near: str = None,
+            geo: str = None,
+            source: str = None,
+            translate: str = None,
+            trans_src: str = None,
+            trans_dest: str = None
+    ):
+        self.id = id
+        self.id_str = id_str
+        self.conversation_id = conversation_id
+        self.datetime = datetime
+        self.datestamp = datestamp
+        self.timestamp = timestamp
+        self.user_id = user_id
+        self.user_id_str = user_id_str
+        self.username = username
+        self.name = name
+        self.place = place
+        self.timezone = timezone
+        self.mentions = mentions
+        self.reply_to = reply_to
+        self.urls = urls
+        self.video = video
+        self.thumbnail = thumbnail
+        self.tweet = tweet
+        self.lang = lang
+        self.hashtags = hashtags
+        self.cashtags = cashtags
+        self.replies_count = replies_count
+        self.retweets_count = retweets_count
+        self.likes_count = likes_count
+        self.link = link
+        self.retweet = retweet
+        self.retweet_id = retweet_id
+        self.retweet_date = retweet_date
+        self.user_rt = user_rt
+        self.user_rt_id = user_rt_id
+        self.quote_url = quote_url
+        self.near = near
+        self.geo = geo
+        self.source = source
+        self.translate = translate
+        self.trans_src = trans_src
+        self.trans_dest = trans_dest
