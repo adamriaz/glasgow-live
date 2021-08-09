@@ -1,4 +1,6 @@
 # Glasgow Live
+[![PyPI version](https://badge.fury.io/py/glasgow-live.svg)](https://pypi.org/project/glasgow-live)
+[![codecov](https://codecov.io/gh/adamriaz/glasgow-live/branch/master/graph/badge.svg?token=0WQ27GBQ7C)](https://codecov.io/gh/adamriaz/glasgow-live)
 
 A python module for news feeds from https://www.glasgowlive.co.uk/
 
