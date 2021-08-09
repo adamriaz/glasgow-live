@@ -4,7 +4,7 @@ from adapters import RSSFeedAdapter, FacebookFeedAdapter, TwitterFeedAdapter
 from glasgow_live.social_medias import TWITTER_PAGE, FACEBOOK_PAGE
 
 
-def rss_feed(url: str) -> list[dict[str, Any]]:
+def rss_feed(url: str) -> list:
     """
     Returns the results from RSS url.
 
@@ -14,7 +14,7 @@ def rss_feed(url: str) -> list[dict[str, Any]]:
     return RSSFeedAdapter(url).get_rss_data()
 
 
-def facebook_feed(pages: int = 3) -> list[dict[str, Any]]:
+def facebook_feed(pages: int = 3) -> list:
     """
     Returns the results from facebook page.
 
@@ -24,7 +24,7 @@ def facebook_feed(pages: int = 3) -> list[dict[str, Any]]:
     return FacebookFeedAdapter(FACEBOOK_PAGE).get_data(pages=pages)
 
 
-def twitter_feed(pages: int = 1) -> list[dict[str, Any]]:
+def twitter_feed(pages: int = 1) -> list:
     """
     Returns the results from twitter page.
 

@@ -25,7 +25,7 @@ class TwitterFeedAdapter:
         except Exception as e:
             raise ValueError(f"Error occurred on Twitter Feed. {e}")
 
-    def get_data(self, pages: int = 1) -> list[dict[str, Any]]:
+    def get_data(self, pages: int = 1) -> list:
         """
         Returns tweets from Twitter page.
 
@@ -85,13 +85,13 @@ class FacebookFeedAdapter:
         self._facebook_scraper = facebook_scraper
         self._page_name = page_name
 
-    def _get_posts(self, pages: int = 3) -> Iterator[dict[str, Any]]:
+    def _get_posts(self, pages: int = 3) -> Iterator:
         try:
             return self._facebook_scraper.get_posts(account=self._page_name, pages=pages)
         except Exception as e:
             raise ValueError(f"Error occurred on Facebook Feed. {e}")
 
-    def get_data(self, pages: int = 3) -> list[dict[str, Any]]:
+    def get_data(self, pages: int = 3) -> list:
         """
         Returns posts from Facebook page.
 
@@ -101,35 +101,35 @@ class FacebookFeedAdapter:
         posts = []
         for item in self._get_posts(pages):
             post = FacebookPost(
-                post_id=item["post_id"],
-                text=item["text"],
-                post_text=item["post_text"],
-                shared_text=item["shared_text"],
-                time=item["time"],
-                image=item["image"],
-                image_lowquality=item["image_lowquality"],
-                images=item["images"],
-                images_description=item["images_description"],
-                images_lowquality=item["images_lowquality"],
-                images_lowquality_description=item["images_lowquality_description"],
-                video=item["video"],
-                video_duration_seconds=item["video_duration_seconds"],
-                video_height=item["video_height"],
-                video_id=item["video_id"],
-                video_quality=item["video_quality"],
-                video_size_MB=item["video_size_MB"],
-                video_thumbnail=item["video_thumbnail"],
-                video_watches=item["video_watches"],
-                video_width=item["video_width"],
-                likes=item["likes"],
-                comments=item["comments"],
-                shares=item["shares"],
-                post_url=item["post_url"],
-                link=item["link"],
-                user_id=item["user_id"],
-                username=item["username"],
-                user_url=item["user_url"],
-                is_live=item["is_live"],
+                post_id=item['post_id'] if 'post_id' in item else None,
+                text=item['text'] if 'text' in item else None,
+                post_text=item['post_text'] if 'post_text' in item else None,
+                shared_text=item['shared_text'] if 'shared_text' in item else None,
+                time=item['time'] if 'time' in item else None,
+                image=item['image'] if 'image' in item else None,
+                image_lowquality=item['image_lowquality'] if 'image_lowquality' in item else None,
+                images=item['images'] if 'images' in item else None,
+                images_description=item['images_description'] if 'images_description' in item else None,
+                images_lowquality=item['images_lowquality'] if 'images_lowquality' in item else None,
+                images_lowquality_description=item['images_lowquality_description'] if 'images_lowquality_description' in item else None,
+                video=item['video'] if 'video' in item else None,
+                video_duration_seconds=item['video_duration_seconds'] if 'video_duration_seconds' in item else None,
+                video_height=item['video_height'] if 'video_height' in item else None,
+                video_id=item['video_id'] if 'video_id' in item else None,
+                video_quality=item['video_quality'] if 'video_quality' in item else None,
+                video_size_MB=item['video_size_MB'] if 'video_size_MB' in item else None,
+                video_thumbnail=item['video_thumbnail'] if 'video_thumbnail' in item else None,
+                video_watches=item['video_watches'] if 'video_watches' in item else None,
+                video_width=item['video_width'] if 'video_width' in item else None,
+                likes=item['likes'] if 'likes' in item else None,
+                comments=item['comments'] if 'comments' in item else None,
+                shares=item['shares'] if 'shares' in item else None,
+                post_url=item['post_url'] if 'post_url' in item else None,
+                link=item['link'] if 'link' in item else None,
+                user_id=item['user_id'] if 'user_id' in item else None,
+                username=item['username'] if 'username' in item else None,
+                user_url=item['user_url'] if 'user_url' in item else None,
+                is_live=item['is_live'] if 'is_live' in item else None,
             )
             posts.append(post.__dict__)
         return posts
@@ -147,7 +147,7 @@ class RSSFeedAdapter:
         except Exception as e:
             raise ValueError(f"Error occurred on RSS Feed. {e}")
 
-    def get_rss_data(self) -> list[dict[str, Any]]:
+    def get_rss_data(self) -> list:
         """
         Returns the results from RSS url.
 
