@@ -33,3 +33,9 @@ SPORT_NEWS = f"{_BASE_URL}/{_SPORT}/{_RSS_SERVICE}"
 CELTIC_FC = f"{_BASE_URL}/{_ALL_ABOUT}/celtic-fc/{_RSS_SERVICE}"
 RANGERS_FC = f"{_BASE_URL}/{_ALL_ABOUT}/rangers-fc/{_RSS_SERVICE}"
 OTHER_SPORT = f"{_BASE_URL}/{_SPORT}/other-sport/{_RSS_SERVICE}"
+
+
+SPECIAL_FEATURES = f"{_BASE_URL}/special-features/{_RSS_SERVICE}"
+PROPERTY = f"{_BASE_URL}/{_ALL_ABOUT}/property/{_RSS_SERVICE}"
+LIFE_STYLE = f"{_BASE_URL}/{_ALL_ABOUT}/life-style/{_RSS_SERVICE}"
+GLASGOW_LIVES = f"{_BASE_URL}/{_ALL_ABOUT}/glasgow-lives/{_RSS_SERVICE}"

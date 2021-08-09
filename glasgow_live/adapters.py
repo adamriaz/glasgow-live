@@ -9,19 +9,19 @@ from models import RSSEntry, FacebookPost, TwitterTweet
 class TwitterFeedAdapter:
 
     def __init__(self):
-        self.twint = twint
-        self.twitter = self.twint.Config()
-        self.twitter.Hide_output = True
+        self._twint = twint
+        self._twitter = self._twint.Config()
+        self._twitter.Hide_output = True
 
     def _get_tweets(self, pages: int = 1) -> list:
         try:
             posts = []
-            self.twitter.Username = TWITTER_PAGE
-            self.twitter.Limit = pages
-            self.twitter.Store_json = True
-            self.twitter.Store_object = True
-            self.twitter.Store_object_tweets_list = posts
-            self.twint.run.Search(self.twitter)
+            self._twitter.Username = TWITTER_PAGE
+            self._twitter.Limit = pages
+            self._twitter.Store_json = True
+            self._twitter.Store_object = True
+            self._twitter.Store_object_tweets_list = posts
+            self._twint.run.Search(self._twitter)
             return posts
         except Exception as e:
             raise ValueError(f"Error occurred on Twitter Feed. {e}")
@@ -83,11 +83,11 @@ class TwitterFeedAdapter:
 class FacebookFeedAdapter:
 
     def __init__(self):
-        self.facebook_scraper = facebook_scraper
+        self._facebook_scraper = facebook_scraper
 
     def _get_posts(self, pages: int = 3) -> Iterator[dict[str, Any]]:
         try:
-            return self.facebook_scraper.get_posts(account=FACEBOOK_PAGE, pages=pages)
+            return self._facebook_scraper.get_posts(account=FACEBOOK_PAGE, pages=pages)
         except Exception as e:
             raise ValueError(f"Error occurred on Facebook Feed. {e}")
 
@@ -138,17 +138,13 @@ class FacebookFeedAdapter:
 class RSSFeedAdapter:
 
     def __init__(self):
-        self.feedparser = feedparser
+        self._feedparser = feedparser
 
     def _get_entries(self, url: str) -> any:
         try:
-            return self.feedparser.parse(url)["entries"]
+            return self._feedparser.parse(url)["entries"]
         except Exception as e:
             raise ValueError(f"Error occurred on RSS Feed. {e}")
-
-    # TODO GET CHANNEL INFO
-    def _get_channel_info(self):
-        pass
 
     def get_rss_data(self, url: str) -> list[dict[str, Any]]:
         """

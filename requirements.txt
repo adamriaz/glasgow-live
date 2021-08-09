@@ -63,6 +63,5 @@ webencodings==0.5.1
 websockets==8.1
 wincertstore==0.2
 zipp==3.5.0
-
 setuptools~=52.0.0.post20210125
 twint~=2.1.20
