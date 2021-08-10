@@ -84,7 +84,7 @@ tzlocal==2.1
 urllib3==1.26.6
 w3lib==1.22.0
 webencodings==0.5.1
-websockets==8.1
+websockets>=9.1
 wincertstore==0.2
 yarl==1.6.3
 zipp==3.5.0
