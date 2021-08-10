@@ -37,9 +37,10 @@ jobs:
     - name: Run Coverage
       run: |
         coverage run -m unittest discover
+        coverage xml
 
     - name: Upload to codecov.io
       run: |
         curl -Os https://uploader.codecov.io/latest/linux/codecov
         chmod +x codecov
-        ./codecov
+        ./codecov -f coverage.xml
