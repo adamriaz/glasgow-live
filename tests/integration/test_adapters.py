@@ -21,18 +21,18 @@ class TestTwitterFeedAdapter(unittest.TestCase):
         self.assertGreater(len(test), 0, msg="Expects list to be greater than 0")
 
 
-class TestFacebookFeedAdapter(unittest.TestCase):
-
-    def setUp(self):
-        self.facebook_adapter = FacebookFeedAdapter(FACEBOOK_PAGE)
-
-    def test__get_posts(self):
-        test = self.facebook_adapter._get_posts(1)
-        self.assertIsInstance(test, Iterator, msg="Expects to be an Iterator/Generator")
-
-    def test_get_data(self):
-        test = self.facebook_adapter.get_data()
-        self.assertGreater(len(test), 0, msg="Expects list to be greater than 0")
+# class TestFacebookFeedAdapter(unittest.TestCase):
+#
+#     def setUp(self):
+#         self.facebook_adapter = FacebookFeedAdapter(FACEBOOK_PAGE)
+#
+#     def test__get_posts(self):
+#         test = self.facebook_adapter._get_posts(1)
+#         self.assertIsInstance(test, Iterator, msg="Expects to be an Iterator/Generator")
+#
+#     def test_get_data(self):
+#         test = self.facebook_adapter.get_data()
+#         self.assertGreater(len(test), 0, msg="Expects list to be greater than 0")
 
 
 class TestRSSFeedAdapter(unittest.TestCase):
