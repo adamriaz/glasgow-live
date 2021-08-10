@@ -141,5 +141,3 @@ cython_debug/
 #idea files
 .idea
 
-#requirements
-requirements.txt
