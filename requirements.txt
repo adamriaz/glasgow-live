@@ -1,5 +1,5 @@
 requests~=2.26.0
-setuptools~=52.0.0
+setuptools~=60.2.0
 feedparser~=6.0.8
 facebook_scraper~=0.2.45
 twint~=2.1.20

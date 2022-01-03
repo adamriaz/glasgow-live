@@ -8,7 +8,7 @@ with open(path.join(this_directory, "README.md"), encoding="utf-8") as fh:
 
 NAME = "glasgow-live"
 DESCRIPTION = "A python module for news feeds from https://www.glasgowlive.co.uk/"
-VERSION = "0.0.8"
+VERSION = "0.0.9"
 AUTHOR = "Adam Riaz"
 AUTHOR_EMAIL = "riaz_adam@hotmail.com"
 LONG_DESCRIPTION = long_description
